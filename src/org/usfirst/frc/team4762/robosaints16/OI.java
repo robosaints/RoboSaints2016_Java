@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4762.robosaints16;
 
-import edu.wpi.first.wpilibj.buttons.Button;
-import org.usfirst.frc.team4762.robosaints16.commands.ExampleCommand;
+import org.usfirst.frc.team4762.robosaints16.commands.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.buttons.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,5 +36,12 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	public Joystick driveJoystick;
+	
+	public OI() {
+		// Hoping this is literally all I have to do (last year there was a
+		// seemingly pointless method that returned the Joystick)...
+		driveJoystick = new Joystick(0);
+	}
 }
 
