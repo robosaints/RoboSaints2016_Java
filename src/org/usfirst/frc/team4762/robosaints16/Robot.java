@@ -28,10 +28,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
         // instantiate the command used for the autonomous period
 		driveSystem = new DriveSystem();
         autonomousCommand = new ExampleCommand();
+		oi = new OI();
     }
 	
 	public void disabledPeriodic() {
