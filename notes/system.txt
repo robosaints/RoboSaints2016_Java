@@ -1,0 +1,48 @@
+SUBSYSTEMS
+
+	Drive
+		- 2 motors (Talon PWM; non-CAN - PID)
+		- 2 encoders - track travel
+		- Gyro?, Accel
+		OI
+			- Joystick
+			- Camera
+	Ball loader
+		- One motor - pull ball into frame + lift
+		- One encoder - control speed
+		- Sensor to detect ball
+	Firing
+		- 3 motors
+			- advance ball to throw
+			- 2 - shoot
+		- 3 encoders ?
+			- 1 control speed of advance
+			- 2 control speed of throw
+		- one ultrasonic sensor
+		- camera
+	Flipper - PID - dual purpose
+		- one motor (Jaguar Talon SPX)
+		- one encoder for position
+		- two limit switches
+
+Jaguar (PWM/CAN): ?5
+Talon SPX (PWM/CAN): 2
+Talon PWM: ?2+
+
+COMMANDS
+
+	Loader
+		Joy Button - toggle on/off
+			? Auto shutoff with ball loaded
+			? Auto on after ball leaves
+	Firing
+		Joy button - shoot
+			* Live window - manual speed adjust
+			- Spin up throwing motors
+			- Advance ball
+		? manual control
+		? Joy button distance-based shooting
+	Flipper
+		? - Lift gate - Drive control + flipper together
+		- Button - Stow
+		- Slider - control (note: not a command; LiveWindow object)
