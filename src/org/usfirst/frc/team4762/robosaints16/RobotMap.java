@@ -2,6 +2,7 @@ package org.usfirst.frc.team4762.robosaints16;
 
 // import com.subclasses.many.so.be.to.have.there.does.why
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -30,9 +31,13 @@ public class RobotMap {
 		
 		drive = new RobotDrive(driveLeft, driveRight);
 		
+		LiveWindow.addActuator("Drive System", "Left Motor", (Talon) driveLeft);
+		LiveWindow.addActuator("Drive System", "Right Motor", (Talon) driveRight);
+		LiveWindow.setEnabled(true);
+		
 		drive.setSafetyEnabled(true);
 		drive.setSensitivity(0.5);
 		drive.setExpiration(0.1);
-		drive.setMaxOutput(1.0); // .0 to keep type
+		drive.setMaxOutput(1.0); // .0 to keep float type
 	}
 }

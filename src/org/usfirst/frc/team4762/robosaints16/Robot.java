@@ -2,11 +2,13 @@
 package org.usfirst.frc.team4762.robosaints16;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4762.robosaints16.commands.*;
 import org.usfirst.frc.team4762.robosaints16.subsystems.*;
+//import org.usfirst.frc4762.MyJavaRobot.Robot;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,6 +22,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static DriveSystem driveSystem;
+	public static JoyDrive joyDrive;
 
     Command autonomousCommand;
 
@@ -31,6 +34,10 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
 		driveSystem = new DriveSystem();
         autonomousCommand = new ExampleCommand();
+        
+        // This was documented by RobotBuilder last year, stating to
+        // NOT MOVE THIS, or else there WILL be null pointers. Make
+        // sure that this is always the LAST class that is initialized.
 		oi = new OI();
     }
 	
@@ -56,6 +63,9 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+
+        //joyDrive = new JoyDrive();
+        //joyDrive.start();
     }
 
     /**
@@ -70,7 +80,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	//RobotMap.drive.arcadeDrive(Robot.oi.driveJoystick, true);
         Scheduler.getInstance().run();
+        RobotMap.drive.arcadeDrive(oi.getDriveJoy());
     }
     
     /**

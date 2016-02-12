@@ -1,5 +1,4 @@
 package org.usfirst.frc.team4762.robosaints16;
-
 import org.usfirst.frc.team4762.robosaints16.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
@@ -42,6 +41,10 @@ public class OI {
 		// Hoping this is literally all I have to do (last year there was a
 		// seemingly pointless method that returned the Joystick)...
 		driveJoystick = new Joystick(0);
+	}
+	
+	public GenericHID getDriveJoy() {
+		return driveJoystick;
 	}
 }
 
