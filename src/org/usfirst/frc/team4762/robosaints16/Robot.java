@@ -31,9 +31,14 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
+    	
+    	// This line MUST be here, otherwise you will get
+    	// various NullPointerExceptions. DO NOT MOVE THIS!
+    	RobotMap.init();
+    	
+	    // instantiate the command used for the autonomous period
 		driveSystem = new DriveSystem();
-        autonomousCommand = new ExampleCommand();
+        //autonomousCommand = new ExampleCommand();
         
         // This was documented by RobotBuilder last year, stating to
         // NOT MOVE THIS, or else there WILL be null pointers. Make
@@ -64,8 +69,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
 
-        //joyDrive = new JoyDrive();
-        //joyDrive.start();
+        joyDrive = new JoyDrive();
+        joyDrive.start();
     }
 
     /**

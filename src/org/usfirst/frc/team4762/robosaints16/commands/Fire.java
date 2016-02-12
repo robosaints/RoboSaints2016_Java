@@ -1,22 +1,15 @@
 package org.usfirst.frc.team4762.robosaints16.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team4762.robosaints16.Robot;
-import org.usfirst.frc.team4762.robosaints16.RobotMap;
-import org.usfirst.frc.team4762.robosaints16.subsystems.DriveSystem;
 
 /**
  *
  */
-public class JoyDrive extends Command {
+public class Fire extends Command {
 
-    public JoyDrive() {
+    public Fire() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
-    	requires(Robot.driveSystem);
     }
 
     // Called just before this Command runs the first time
@@ -25,8 +18,6 @@ public class JoyDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSystem.TakeJoystickInputs(Robot.oi.getDriveJoy());
-    	// TODO: Couldn't this just be moved into JoyDrive.initialize()?
     }
 
     // Make this return true when this Command no longer needs to run execute()

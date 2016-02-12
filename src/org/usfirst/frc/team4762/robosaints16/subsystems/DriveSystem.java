@@ -4,6 +4,7 @@ package org.usfirst.frc.team4762.robosaints16.subsystems;
 import org.usfirst.frc.team4762.robosaints16.Robot;
 import org.usfirst.frc.team4762.robosaints16.RobotMap;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,18 +16,19 @@ public class DriveSystem extends Subsystem {
 	
 	RobotDrive robotDrive = RobotMap.drive;
 	
+	
 	public void initDefaultCommand() {
 	}
 
-    public DriveSystem() {
+    //public DriveSystem() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    }
+    //}
     
     public void TakeJoystickInputs(GenericHID joystick) {
     	robotDrive.arcadeDrive(joystick, true);
     }
-
+/*
     // Called just before this Command runs the first time
     protected void initialize() {
     }
@@ -48,4 +50,5 @@ public class DriveSystem extends Subsystem {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    */
 }
