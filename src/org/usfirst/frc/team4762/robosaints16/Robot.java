@@ -39,16 +39,15 @@ import org.usfirst.frc.team4762.robosaints16.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static DriveSystem driveSystem;
 	public static Loader loader;
 	public static Firing firing;
 	
-	public static JoyDrive joyDrive;
-	public static XboxEasterEgg xboxEasterEgg;
+	public static AutonomousCommands autoCmds;
+	public static TeleoperatedCommands teleopCmds;
+	//public static XboxEasterEgg xboxEasterEgg;
 
-    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -86,7 +85,9 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        
+        autoCmds = new AutonomousCommands();
+        autoCmds.start();
     }
 
     /**
@@ -101,10 +102,9 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
 
-        joyDrive = new JoyDrive();
-        joyDrive.start();
+        teleopCmds = new TeleoperatedCommands();
+        teleopCmds.start();
         
 //        if (oi.getDriveJoy().getIsXbox()) {
 //        	xboxEasterEgg = new XboxEasterEgg();

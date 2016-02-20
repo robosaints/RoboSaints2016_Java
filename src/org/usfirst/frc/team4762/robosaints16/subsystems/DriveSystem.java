@@ -7,6 +7,7 @@ import org.usfirst.frc.team4762.robosaints16.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +17,11 @@ public class DriveSystem extends Subsystem {
 	
 	RobotDrive robotDrive = RobotMap.drive;
 	
+	double speed = RobotMap.driveSpeed;
+	
+	SpeedController left = RobotMap.driveLeft;
+	SpeedController right = RobotMap.driveRight;
+	
 	
 	public void initDefaultCommand() {
 	}
@@ -24,6 +30,14 @@ public class DriveSystem extends Subsystem {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     //}
+	
+	public SpeedController getLeft() {
+		return left;
+	}
+	
+	public SpeedController getRight() {
+		return right;
+	}
     
     public void TakeJoystickInputs(GenericHID joystick) {
     	robotDrive.arcadeDrive(joystick, true);

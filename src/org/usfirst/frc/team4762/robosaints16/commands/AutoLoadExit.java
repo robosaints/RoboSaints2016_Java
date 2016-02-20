@@ -1,27 +1,24 @@
 package org.usfirst.frc.team4762.robosaints16.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4762.robosaints16.Robot;
-import org.usfirst.frc.team4762.robosaints16.RobotMap;
-import org.usfirst.frc.team4762.robosaints16.subsystems.DriveSystem;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class JoyDrive extends Command {
+public class AutoLoadExit extends Command {
 
-    public JoyDrive() {
+    public AutoLoadExit() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
-    	requires(Robot.driveSystem);
+    	requires(Robot.loader);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveSystem.TakeJoystickInputs(Robot.oi.getDriveJoy());
+    	Robot.loader.frontMotor().set(-0.7);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,11 +27,19 @@ public class JoyDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	try {
+			this.wait(1500);
+		} catch (InterruptedException e) {
+			// Auto-generated catch block
+			// thanks wpilib
+			e.printStackTrace();
+		}
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.loader.frontMotor().set(0);
     }
 
     // Called when another command which requires one or more of the same

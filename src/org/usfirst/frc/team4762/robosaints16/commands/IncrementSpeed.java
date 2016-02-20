@@ -1,22 +1,25 @@
-
 package org.usfirst.frc.team4762.robosaints16.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team4762.robosaints16.Robot;
-
 /**
  *
  */
-public class ExampleCommand extends Command {
-
-    public ExampleCommand() {
+public class IncrementSpeed extends Command {
+	
+	protected String speedName = "asdasd"; // TODO: move to debug Subsystem
+	protected double speedValue = 0.5d;
+	
+    public IncrementSpeed() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        // eg. requires(chassis);
     }
+    
+    // right now this is sort of a debug tool
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

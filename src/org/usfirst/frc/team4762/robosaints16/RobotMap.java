@@ -22,6 +22,31 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	
+	
+	
+	// SETTINGS
+	
+	
+	
+	
+	// Speeds
+	
+	// The speeds are used for certain commands at how fast to move the motor.
+	public static double driveSpeed = 1;
+	public static double feedSpeed = 0.25; // might consider renaming this
+	public static double spitSpeed = 0.5;
+	public static double loaderAdvanceSpeed = 0.7;
+	public static double loaderReturnSpeed = 0.2;
+	public static double fireSpeed = 0.55;
+	
+	
+	
+	
+	// COMPONENTS
+	
+	
+	
+	
 	// DriveSystem
 	public static RobotDrive drive;
 	public static SpeedController driveLeft;
@@ -30,19 +55,19 @@ public class RobotMap {
 	public static Encoder driveLeftEncoder;
 	public static Encoder driveRightEncoder;
 	
-	// TODO: Add a sensor to detect the ball (with a camera?)
+	
+	// TODO: Add a sensor to detect the ball. (With a camera?)
 	
 	// Loader
 	public static SpeedController loaderFront;
 	public static SpeedController loaderBack;
 	
-	public static double loaderSpeed = 0.1;
 	
 	// TODO: Add encoders?
 	
 	// Firing
 	public static RobotDrive fire;
-	public static SpeedController firingAdvance;
+	public static SpeedController firingAdvance; // TODO: Not sure if firingAdvance is actually used.
 	public static SpeedController firingThrowLeft;
 	public static SpeedController firingThrowRight;
 	public static Encoder firingAdvanceEncoder;
@@ -83,7 +108,7 @@ public class RobotMap {
 		drive = new RobotDrive(driveLeft, driveRight);
 		drive.setSensitivity(1);
 		
-		// TODO: Is type casting ACTUALLY necessary
+		// TODO: Is type casting ACTUALLY necessary?
 		
 		// Trying negative setMaxOutput.
 		
@@ -102,7 +127,7 @@ public class RobotMap {
 		drive.setSafetyEnabled(true);
 		drive.setSensitivity(1);
 		drive.setExpiration(0.1);
-		drive.setMaxOutput(1); // full power
+		drive.setMaxOutput(driveSpeed); // full power
 		
 		
 		

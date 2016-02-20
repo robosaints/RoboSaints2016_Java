@@ -37,13 +37,48 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	public Joystick driveJoystick;
 	
+	public JoystickButton fireBtn;
+	public JoystickButton loadBtn;
+	public JoystickButton loadExitBtn;
+	public JoystickButton incSpeedBtn;
+	public JoystickButton decSpeedBtn;
+	public JoystickButton unloadBtn;
+	public JoystickButton loadReturnBtn;
+	
 	public OI() {
 		// Hoping this is literally all I have to do (last year there was a
 		// seemingly pointless method that returned the Joystick)...
 		driveJoystick = new Joystick(0);
+		
+		fireBtn = new JoystickButton(driveJoystick, 10); // 10=Right Throttle
+		fireBtn.whileHeld(new Fire());
+		
+		loadBtn = new JoystickButton(driveJoystick, 1); // 1=A
+		loadBtn.whileHeld(new Load());
+		
+		loadExitBtn = new JoystickButton(driveJoystick, 2); // 2=B
+		loadExitBtn.whileHeld(new LoadExit());
+		
+		unloadBtn = new JoystickButton(driveJoystick, 3); // 3=X
+		unloadBtn.whileHeld(new Unload());
+		
+		loadReturnBtn = new JoystickButton(driveJoystick, 4); // 4=Y
+		loadReturnBtn.whileHeld(new LoadReturn());
+		
+		try {
+			// I don't trust this...
+			incSpeedBtn = new JoystickButton(driveJoystick, 5); // 5=LB
+			incSpeedBtn.whenPressed(new IncrementSpeed());
+	
+			decSpeedBtn = new JoystickButton(driveJoystick, 6); // 6=RB
+			decSpeedBtn.whenPressed(new DecrementSpeed());
+		}
+		catch (Exception ex) {
+			System.out.println("Why don't you actually code something right, Levi?");
+		}
 	}
 	
-	public GenericHID getDriveJoy() {
+	public Joystick getDriveJoy() {
 		return driveJoystick;
 	}
 }

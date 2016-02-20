@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class FiringGroup extends CommandGroup {
+public class FireQuick extends CommandGroup {
     
-    public  FiringGroup() {
+    public  FireQuick() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,5 +24,12 @@ public class FiringGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	// spin up the motors...
+    	addSequential(new PrepareFire());
+    	// ... and fire!
+    	addSequential(new AutoLoadExit());
+    	//
+    	addSequential(new StopFire());
     }
 }

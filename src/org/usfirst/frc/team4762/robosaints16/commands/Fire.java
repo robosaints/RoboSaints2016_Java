@@ -8,6 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Fire extends Command {
+	
+	protected void setMotors(double r, double l) {
+		Robot.firing.getRight().set(r);
+		Robot.firing.getLeft().set(l);
+	}
 
     public Fire() {
         // Use requires() here to declare subsystem dependencies
@@ -26,8 +31,7 @@ public class Fire extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.firing.getRight().set(-1);
-//    	Robot.firing.getLeft().set(1);
+    	this.setMotors(-.55d, .55d);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,8 +41,7 @@ public class Fire extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.firing.getRight().set(0);
-//    	Robot.firing.getLeft().set(0);
+    	this.setMotors(0d, 0d);
     }
 
     // Called when another command which requires one or more of the same
@@ -46,5 +49,6 @@ public class Fire extends Command {
     protected void interrupted() {
 //    	Robot.firing.getRight().set(1);
 //    	Robot.firing.getLeft().set(1);
+    	this.setMotors(0d, 0d);
     }
 }
