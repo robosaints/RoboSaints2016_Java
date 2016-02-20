@@ -1,9 +1,9 @@
 package org.usfirst.frc.team4762.robosaints16;
 
-// import com.subclasses.many.so.be.to.have.there.does.why
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -30,15 +30,24 @@ public class RobotMap {
 	public static Encoder driveLeftEncoder;
 	public static Encoder driveRightEncoder;
 	
-	// TODO: add sensor to detect ball
+	// TODO: Add a sensor to detect the ball (with a camera?)
+	
+	// Loader
+	public static SpeedController loaderFront;
+	public static SpeedController loaderBack;
+	
+	public static double loaderSpeed = 0.1;
+	
+	// TODO: Add encoders?
 	
 	// Firing
+	public static RobotDrive fire;
 	public static SpeedController firingAdvance;
-	public static SpeedController firingThrowBottom;
-	public static SpeedController firingThrowTop;
+	public static SpeedController firingThrowLeft;
+	public static SpeedController firingThrowRight;
 	public static Encoder firingAdvanceEncoder;
-	public static Encoder firingThrowBottomEncoder;
-	public static Encoder firingThrowTopEncoder;
+	public static Encoder firingThrowLeftEncoder;
+	public static Encoder firingThrowRightEncoder;
 	
 	public static Ultrasonic firingUltrasonic;
 	public static CameraServer firingCamera;
@@ -49,61 +58,104 @@ public class RobotMap {
 	public static DigitalInput fliperLimitLeft;
 	public static DigitalInput fliperLimitRight;
 	
+	// Miscellaneous
+	public static NetworkTable table;
+	
 	
 	
 	public static void init() {
 		
+		//table = new NetworkTable();
 		
 		
 		// SYSTEM 1
 		// DriveSystem
 		
-		driveLeft = new Talon(1);
-		driveRight = new Talon(2);
+		driveLeft = new Talon(2);
+		driveRight = new Talon(1);
+		
+		loaderFront = new Talon(6);
+		loaderBack = new Talon(7);
+
+		firingThrowLeft = new Jaguar(8);
+		firingThrowRight = new Jaguar(9);
 		
 		drive = new RobotDrive(driveLeft, driveRight);
 		drive.setSensitivity(1);
 		
-		LiveWindow.addActuator("Drive System", "Left Motor", (Talon) driveLeft);
-		LiveWindow.addActuator("Drive System", "Right Motor", (Talon) driveRight);
+		// TODO: Is type casting ACTUALLY necessary
 		
-		LiveWindow.setEnabled(true);
+		// Trying negative setMaxOutput.
 		
-		// TODO: setInvertedMotor if necessary / possible
+		// NOTE: SpeedController.setInverted(boolean inverted) is NEW this year, so
+		//       setInvertedMotor may no longer exist.
 		
-			System.err.println("attempting motor setup");
+			// had a try-catch statement here
+			//System.err.println("attempting motor setup");
 			//drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
 			//drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-			//.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+			//drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
 			//drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
-			System.err.println("IT WORKS\n");
+			//System.err.println("IT WORKS");
 			//System.err.println("Failed to invert motors. Motors will not be inverted.");
 		
 		drive.setSafetyEnabled(true);
 		drive.setSensitivity(1);
 		drive.setExpiration(0.1);
-		drive.setMaxOutput(-0.5); // half power
+		drive.setMaxOutput(1); // full power
 		
 		
 		
 		// SYSTEM 2
-		// Firing
+		// Loader
 		
-		// (presumably Talon motors)
+		//try {
+			 //may have to switch pinouts
+//			
+//		}
+//		catch (Exception ex) {
+//			System.out.println("The loader talon motors were not found, so they will be ignored.");
+//		}
 		
-		System.out.println("TESTING OUTPUT");
-		System.out.println("TESTING TESTING 1...2...3...");
 		
-		try {
-			//firingAdvance = new Talon(3); // pin-out 3 for now
-
-		
-		}
-		catch (Exception ex) {
-			
-		}
 		
 		// SYSTEM 3
+		// Firing
+		
+//		fire = new RobotDrive(firingThrowLeft, firingThrowRight);
+//		fire.setSensitivity(1);
+//		fire.setSafetyEnabled(true);
+//		fire.setSensitivity(1);
+//		fire.setExpiration(0.1);
+//		fire.setMaxOutput(1); // full power
+//		try {
+//			// Adding talon motors
+//			// (assuming 8 and 9 for now)
+//			firingThrowLeft = new Talon(8);
+//			firingThrowRight = new Talon(9);
+//			
+//			LiveWindow.addActuator("Firing", "Left Motor", (Talon) firingThrowLeft);
+//			LiveWindow.addActuator("Firing", "Right Motor", (Talon) firingThrowRight);
+//		}
+//		catch (Exception ex) {
+//			System.out.println("The firing talon motors were not found, so they will be ignored.");
+//		}
+		
+		// SYSTEM 4
 		// Flipper
+		
+		// LiveWindow items MUST BE done LAST, or else there will be nullpointerexceptions regarding
+		// the PWM!!
+		LiveWindow.addActuator("Driving", "Left Motor", (Talon) driveLeft);
+		LiveWindow.addActuator("Driving", "Right Motor", (Talon) driveRight);
+		
+		LiveWindow.addActuator("Loading", "Front Motor", (Talon) loaderFront);
+		LiveWindow.addActuator("Loading", "Back Motor", (Talon) loaderBack);
+
+		LiveWindow.addActuator("Throwing", "Throw Left", (Jaguar) firingThrowLeft);
+		LiveWindow.addActuator("Throwing", "Throw Right", (Jaguar) firingThrowRight);
+
+		
+		LiveWindow.setEnabled(true);
 	}
 }
