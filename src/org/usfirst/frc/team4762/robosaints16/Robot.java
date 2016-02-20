@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public static DriveSystem driveSystem;
 	public static Loader loader;
 	public static Firing firing;
+	public static Flipper flipper;
 	
 	public static AutonomousCommands autoCmds;
 	public static TeleoperatedCommands teleopCmds;
@@ -64,6 +65,7 @@ public class Robot extends IterativeRobot {
 		driveSystem = new DriveSystem();
 		loader = new Loader();
 		firing = new Firing();
+		flipper = new Flipper();
         //autonomousCommand = new ExampleCommand();
         
         // This was documented by RobotBuilder last year, stating to

@@ -105,6 +105,8 @@ public class RobotMap {
 		firingThrowLeft = new Jaguar(8);
 		firingThrowRight = new Jaguar(9);
 		
+		flipper = new Talon(5);
+		
 		drive = new RobotDrive(driveLeft, driveRight);
 		drive.setSensitivity(1);
 		
