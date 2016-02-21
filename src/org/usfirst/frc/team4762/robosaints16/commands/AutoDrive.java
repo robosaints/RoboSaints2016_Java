@@ -7,15 +7,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForward extends Command {
+public class AutoDrive extends Command {
 	
+	protected double driveX;
+	protected double driveY;
 	protected int driveTime;
 	protected double drivePower;
 
-    public DriveForward(int time, double power) {
+    public AutoDrive(double x, double y, int time, double power) {
+    	// x moves the vehicle forward or backwards, from a range of -1.0 to 1.0.
+    	// y moves the vehicle left or right, from a range of -1.0 to 1.0.
+    	// time is how long the vehicle should drive for, in milliseconds.
+    	// power is how much power the robot should use, spanning from 0 to 1.
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
+    	driveX = x;
+    	driveY = y;
     	driveTime = time;
     	drivePower = power;
     	
