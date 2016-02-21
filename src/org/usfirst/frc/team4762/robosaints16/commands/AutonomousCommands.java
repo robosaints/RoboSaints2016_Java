@@ -24,5 +24,8 @@ public class AutonomousCommands extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	// drives forward for 5000 milliseconds at 20% power
+    	addSequential(new DriveForward(5000, 0.2));
     }
 }

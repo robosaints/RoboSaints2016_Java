@@ -29,7 +29,7 @@ public class FireQuick extends CommandGroup {
     	addSequential(new PrepareFire());
     	// ... and fire!
     	addSequential(new AutoLoadExit());
-    	//
+    	// stop motors
     	addSequential(new StopFire());
     }
 }

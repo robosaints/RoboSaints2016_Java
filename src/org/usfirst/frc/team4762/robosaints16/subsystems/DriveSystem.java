@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveSystem extends Subsystem {
 	
-	RobotDrive robotDrive = RobotMap.drive;
+	public RobotDrive robotDrive = RobotMap.drive;
 	
 	double speed = RobotMap.driveSpeed;
 	
