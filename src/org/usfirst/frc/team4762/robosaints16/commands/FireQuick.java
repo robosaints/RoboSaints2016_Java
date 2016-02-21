@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4762.robosaints16.commands;
 
+import org.usfirst.frc.team4762.robosaints16.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,6 +26,9 @@ public class FireQuick extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	requires(Robot.loader);
+    	requires(Robot.firing);
     	
     	// spin up the motors...
     	addSequential(new PrepareFire());

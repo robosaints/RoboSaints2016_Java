@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4762.robosaints16.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,7 +26,24 @@ public class AutonomousCommands extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	
+    	// ball can now be fed into the loader
+    	Command load = new Load();
+    	addParallel(load);
+    	
     	// drives forward for 5000 milliseconds at 20% power
     	addSequential(new DriveForward(5000, 0.2));
+    	
+    	// does the exact same thing as DriveForward
+    	//addParallel(new AutoDrive(1, 0, 5000, 0.2));
+    	
+    	// stops the load command from running
+    	// not load.cancel() because then it may not run after the addSequential
+    	addParallel(new StopCommand(load));
+    	
+    	// TODO: FireQuick
+    	// addSequential(new FireQuick());
+    	
+    	
     }
 }
