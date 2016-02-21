@@ -28,7 +28,7 @@ public class TeleoperatedCommands extends CommandGroup {
         // arm.
     	
     	addParallel(new JoyDrive());
-    	addParallel(new FlipperControl());
-    	addSequential(new XboxEasterEgg());
+    	//addParallel(new FlipperControl());
+    	//addSequential(new XboxEasterEgg());
     }
 }

@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static Firing firing;
 	public static Flipper flipper;
 	
+	public static JoyDrive joyDrive;
 	public static AutonomousCommands autoCmds;
 	public static TeleoperatedCommands teleopCmds;
 	//public static XboxEasterEgg xboxEasterEgg;
@@ -105,8 +106,10 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
 
-        teleopCmds = new TeleoperatedCommands();
-        teleopCmds.start();
+        //teleopCmds = new TeleoperatedCommands();
+        //teleopCmds.start();
+    	joyDrive = new JoyDrive();
+    	joyDrive.start();
         
 //        if (oi.getDriveJoy().getIsXbox()) {
 //        	xboxEasterEgg = new XboxEasterEgg();

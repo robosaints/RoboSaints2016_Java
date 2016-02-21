@@ -181,6 +181,8 @@ public class RobotMap {
 
 		LiveWindow.addActuator("Throwing", "Throw Left", (Jaguar) firingThrowLeft);
 		LiveWindow.addActuator("Throwing", "Throw Right", (Jaguar) firingThrowRight);
+		
+		LiveWindow.addActuator("Flipper", "Flipper", (Talon) flipper);
 
 		
 		LiveWindow.setEnabled(true);
