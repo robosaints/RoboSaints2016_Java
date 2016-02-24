@@ -26,7 +26,8 @@ public class FlipperControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.flipper.flipper().set(axis);
+    	Robot.flipper.flipper.set(axis);
+    //	Robot.flipper.flipper().set(axis);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -41,6 +41,7 @@ public class DriveSystem extends Subsystem {
     
     public void TakeJoystickInputs(GenericHID joystick) {
     	robotDrive.arcadeDrive(joystick, true);
+    	
     }
 /*
     // Called just before this Command runs the first time

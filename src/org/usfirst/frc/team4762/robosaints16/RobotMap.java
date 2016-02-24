@@ -96,8 +96,10 @@ public class RobotMap {
 		// SYSTEM 1
 		// DriveSystem
 		
-		driveLeft = new Talon(2);
-		driveRight = new Talon(1);
+		driveLeft = new Talon(1);
+		driveRight = new Talon(2);
+		driveLeft.setInverted(true);
+		driveRight.setInverted(true);
 		
 		loaderFront = new Talon(6);
 		loaderBack = new Talon(7);
@@ -105,10 +107,13 @@ public class RobotMap {
 		firingThrowLeft = new Jaguar(8);
 		firingThrowRight = new Jaguar(9);
 		
-		flipper = new Talon(5);
+		flipper = new Jaguar(5);
+		
 		
 		drive = new RobotDrive(driveLeft, driveRight);
 		drive.setSensitivity(1);
+		
+		//rck to add CAN 
 		
 		// TODO: Is type casting ACTUALLY necessary?
 		
@@ -182,7 +187,7 @@ public class RobotMap {
 		LiveWindow.addActuator("Throwing", "Throw Left", (Jaguar) firingThrowLeft);
 		LiveWindow.addActuator("Throwing", "Throw Right", (Jaguar) firingThrowRight);
 		
-		LiveWindow.addActuator("Flipper", "Flipper", (Talon) flipper);
+		LiveWindow.addActuator("Flipper", "Flipper", (Jaguar) flipper);
 
 		
 		LiveWindow.setEnabled(true);

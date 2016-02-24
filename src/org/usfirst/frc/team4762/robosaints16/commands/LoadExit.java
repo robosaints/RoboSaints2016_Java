@@ -17,7 +17,7 @@ public class LoadExit extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	// temp (until pinouts are corrected)
-    	Robot.loader.frontMotor().set(-1);
+    	Robot.loader.frontMotor().set(-0.45);
     }
 
     // Called repeatedly when this Command is scheduled to run

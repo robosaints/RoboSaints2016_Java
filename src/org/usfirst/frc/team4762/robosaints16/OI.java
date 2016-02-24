@@ -38,20 +38,28 @@ public class OI {
 	public Joystick driveJoystick;
 	
 	public JoystickButton fireBtn;
+	public JoystickButton fireRevBtn;
 	public JoystickButton loadBtn;
 	public JoystickButton loadExitBtn;
 	public JoystickButton incSpeedBtn;
 	public JoystickButton decSpeedBtn;
 	public JoystickButton unloadBtn;
 	public JoystickButton loadReturnBtn;
+	public JoystickButton DriveInvBtn;
 	
 	public OI() {
 		// Hoping this is literally all I have to do (last year there was a
 		// seemingly pointless method that returned the Joystick)...
 		driveJoystick = new Joystick(0);
 		
-		fireBtn = new JoystickButton(driveJoystick, 10); // 10=Right Throttle
+		fireBtn = new JoystickButton(driveJoystick, 6); // 6 = right button
 		fireBtn.whileHeld(new Fire());
+
+		fireRevBtn = new JoystickButton(driveJoystick, 5); // 5 = left button
+		fireRevBtn.whileHeld(new FireRev());
+		
+		DriveInvBtn = new JoystickButton(driveJoystick, 9); // 5 = left button
+		DriveInvBtn.whenPressed(new DriveRev());
 		
 		loadBtn = new JoystickButton(driveJoystick, 1); // 1=A
 		loadBtn.whileHeld(new Load());
@@ -66,6 +74,8 @@ public class OI {
 		loadReturnBtn.whileHeld(new LoadReturn());
 		
 		
+		
+		/*
 		try {
 			// I don't trust this...
 			incSpeedBtn = new JoystickButton(driveJoystick, 5); // 5=LB
@@ -77,6 +87,7 @@ public class OI {
 		catch (Exception ex) {
 			System.out.println("Why don't you actually code something right, Levi?");
 		}
+		*/
 	}
 	
 	public Joystick getDriveJoy() {
